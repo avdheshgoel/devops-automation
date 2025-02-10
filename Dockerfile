@@ -1,4 +1,4 @@
-From openjdk:21.0.6
+From openjdk:21-jdk
 EXPOSE 8080
 ADD target/devops-integration.jar devops-integration.jar
 ENTRYPOINT ["java","-jar","/devops-integration.jar"]
