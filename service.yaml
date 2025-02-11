@@ -1,35 +1,12 @@
-#apiVersion: apps/v1
-#kind: Deployment
-#metadata:
-#  name: student-service-deployment
-#spec:
-#  selector:
-#    matchLabels:
-#      app: student-service
-#  replicas: 3
-#  template:
-#    metadata:
-#      labels:
-#        app: student-service
-#    spec:
-#      containers:
-#        - name: student-service
-#          image: student-service:01
-#          ports:
-#            - containerPort: 8080
-#
-#
-#---
-
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
+apiVersion: student-service/v1
+kind: Service
+metadata:
   name: student-service
 spec:
-  selector:
-    app: student-service
-  ports:
-    - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8080 # The port exposed by the service
-  type: NodePort # type of the service.
+  template:
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/k8s-demo-app/student-service
+          ports:
+            - name: http1
+              containerPort: 80
