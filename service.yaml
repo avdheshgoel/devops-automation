@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: us-central1-docker.pkg.dev/k8s-demo-app/student-service
+        - image: us-central1-docker.pkg.dev/named-inn-450611-t5/k8s-demo-app/student-service
           ports:
             - name: http1
               containerPort: 80
