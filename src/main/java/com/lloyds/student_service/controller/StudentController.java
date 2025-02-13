@@ -1,5 +1,6 @@
 package com.lloyds.student_service.controller;
 
+import com.lloyds.student_service.dto.StudentFindByClassroomIdDto;
 import com.lloyds.student_service.exception.StudentNotFoundException;
 import com.lloyds.student_service.model.Student;
 import com.lloyds.student_service.service.StudentService;
@@ -29,6 +30,11 @@ public class StudentController {
     @PostMapping("/student")
     private ResponseEntity<Student> saveStudent(@RequestBody Student student) {
         return new ResponseEntity<>(studentService.save(student), HttpStatus.OK);
+    }
+
+    @PostMapping("/student/find-by-classroom-ids")
+    public List<Student> getStudentByClassroomIds(@RequestBody StudentFindByClassroomIdDto dto) {
+        return studentService.getStudentByClassroomIds(dto);
     }
 
 }
