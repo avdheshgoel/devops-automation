@@ -56,8 +56,12 @@ public class StudentControllerComponentTest {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].name", is("John Doe")))
+                .andExpect(jsonPath("$[0].email", is("john.doe@asd.com")))
+                .andExpect(jsonPath("$[0].classroomId", is(1)))
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].name", is("Jane Doe")));
+                .andExpect(jsonPath("$[1].name", is("Jane Doe")))
+                .andExpect(jsonPath("$[1].email", is("jane.doe@asd.com")))
+                .andExpect(jsonPath("$[1].classroomId", is(1)));
     }
 
     @Test
@@ -71,7 +75,9 @@ public class StudentControllerComponentTest {
         mockMvc.perform(get("/student/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.name", is("John Doe")));
+                .andExpect(jsonPath("$.name", is("John Doe")))
+                .andExpect(jsonPath("$.email", is("john.doe@asd.com")))
+                .andExpect(jsonPath("$.classroomId", is(1)));
     }
 
     @Test
@@ -87,7 +93,9 @@ public class StudentControllerComponentTest {
                         .content(objectMapper.writeValueAsString(student)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.name", is("John Doe")));
+                .andExpect(jsonPath("$.name", is("John Doe")))
+                .andExpect(jsonPath("$.email", is("john.doe@asd.com")))
+                .andExpect(jsonPath("$.classroomId", is(1)));
     }
 
     @Test
@@ -108,7 +116,11 @@ public class StudentControllerComponentTest {
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].id", is(1)))
                 .andExpect(jsonPath("$[0].name", is("John Doe")))
+                .andExpect(jsonPath("$[0].email", is("john.doe@asd.com")))
+                .andExpect(jsonPath("$[0].classroomId", is(1)))
                 .andExpect(jsonPath("$[1].id", is(2)))
-                .andExpect(jsonPath("$[1].name", is("Jane Doe")));
+                .andExpect(jsonPath("$[1].name", is("Jane Doe")))
+                .andExpect(jsonPath("$[1].email", is("jane.doe@asd.com")))
+                .andExpect(jsonPath("$[1].classroomId", is(1)));;
     }
 }
